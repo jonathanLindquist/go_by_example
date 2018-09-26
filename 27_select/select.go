@@ -17,12 +17,14 @@ func main() {
     c2 <- "Two"
   }()
 
+  recMsg := "received"
+
   for i := 0; i < 2; i++ {
     select {
     case msg1 := <-c1:
-      fmt.Println("recieved", msg1)
+      fmt.Println(recMsg, msg1)
     case msg2 := <-c2:
-      fmt.Println("recieved", msg2)
+      fmt.Println(recMsg, msg2)
     }
   }
 }
